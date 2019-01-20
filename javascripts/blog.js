@@ -18,13 +18,11 @@
           }).then((respPostList) => {
               vm.posts = respPostList.data.posts;
               vm.posts.map((post) => {
-                console.log(post.title);
                 $http({
                     method: 'GET',
                     url: './posts/' + post.file 
                 }).then((respPostContent) => {
                     post.content = converter.makeHtml(respPostContent.data);
-                    console.log(post.content);
                 }, handleError);
               });
             }, handleError);
